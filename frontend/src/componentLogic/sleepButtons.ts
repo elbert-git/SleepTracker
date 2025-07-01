@@ -20,6 +20,8 @@ export default class SleepButtons {
         } catch (e) {
             console.log("failed to load sleep record", e);
         }
+        // trigger correct graphics
+        SleepButtons.setNightMode(new Date().getHours() > 18); // trigger night mode after 6 pm
     }
     static recordSleep() {
         const currentTime = new Date();
@@ -45,11 +47,30 @@ export default class SleepButtons {
                 sleepTime = getHHMM(SleepButtons.previosSleepRecord);
             }
         }
-        API.appendRecord(nightOf, sleepTime, awakeTime, quality);
+        try {
+            (async () => {
+                await API.appendRecord(nightOf, sleepTime, awakeTime, quality);
+            })();
+        } catch (e) {
+            alert("record update failed");
+        }
+    }
+    static setNightMode(b: boolean) {
+        if (b) {
+            document.querySelector(".night-bg")?.classList.remove("none");
+            document.querySelector(".night-fg")?.classList.remove("none");
+            document.querySelector(".morning-bg")?.classList.add("none");
+            document.querySelector(".moring-fg")?.classList.add("none");
+        } else {
+            document.querySelector(".night-bg")?.classList.add("none");
+            document.querySelector(".night-fg")?.classList.add("none");
+            document.querySelector(".morning-bg")?.classList.remove("none");
+            document.querySelector(".moring-fg")?.classList.remove("none");
+        }
     }
 }
 
-function getHHMM(date: Date) {
+export function getHHMM(date: Date) {
     const hours = date.getHours().toString().padStart(2, "0");
     const minutes = date.getMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;

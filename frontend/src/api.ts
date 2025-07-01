@@ -57,25 +57,32 @@ export default class API {
         awakeTime: string,
         quality: number
     ) {
-        // make the fetch
-        console.log(API.userObject);
-        const res = await fetch(`${baseUrl}/append-record`, {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${(API.userObject! as any).accessToken}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                nightOf: date,
-                sleepTime: sleepTime,
-                awakeTime: awakeTime,
-                quality: quality,
-            }),
-        });
-        const resJson = await res.json();
-        console.log(resJson);
-        if (res.status !== 200) {
-            throw "request failed";
+        try {
+            // make the fetch
+            console.log(API.userObject);
+            const res = await fetch(`${baseUrl}/append-record`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${
+                        (API.userObject! as any).accessToken
+                    }`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nightOf: date,
+                    sleepTime: sleepTime,
+                    awakeTime: awakeTime,
+                    quality: quality,
+                }),
+            });
+            const resJson = await res.json();
+            console.log(resJson);
+            if (res.status !== 200) {
+                throw "request failed";
+            }
+        } catch (e) {
+            alert("request failed");
+            console.log(e);
         }
     }
 }

@@ -49,6 +49,7 @@ export default class LoginComponent {
     }
 
     static setVisible(b: boolean) {
+        console.log("setting visible", b);
         if (b) {
             LoginComponent.elLoginRoot.classList.remove("none");
         } else {

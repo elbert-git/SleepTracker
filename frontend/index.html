@@ -7,6 +7,7 @@
         <title>SleepTracker</title>
     </head>
     <body>
+        <!-- login overlay -->
         <div class="login-overlay">
             <div class="login-card">
                 <div class="login-form">
@@ -22,6 +23,17 @@
                 </div>
                 <button black id="logoutButton" class="none">Logout</button>
             </div>
+        </div>
+        <!-- bg -->
+        <div class="overlay morning-bg"></div>
+        <div class="overlay morning-fg"></div>
+        <div class="overlay night-bg"></div>
+        <div class="overlay night-fg"></div>
+        <!-- clock -->
+        <h1 class="overlay time pacifico-regular">09:30</h1>
+        <!-- lower <dialog></dialog> -->
+        <div class="lower-dialogue-overlay">
+            <div id="lowerDialogue hide"></div>
         </div>
         <script type="module" src="/src/main.ts"></script>
     </body>
