@@ -1,1 +1,6 @@
 >>> frontend
+    >> base auth functions
+        create authenticated request function
+    > create api write function
+    > test refresh token
+    

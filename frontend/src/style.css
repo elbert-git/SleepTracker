@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap");
+
+* {
+    font-family: "Kumbh Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "YOPQ" 300;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: rgb(135, 135, 135);
+}
+body {
+    max-width: 600px;
+}
+
+/* commons  */
+button {
+    border-radius: 1rem;
+    outline: none;
+    background-color: white;
+    color: black;
+    font-weight: 900;
+    padding: 0.5rem;
+    border: none;
+}
+button[black] {
+    background-color: black;
+    color: white;
+}
+.none {
+    display: none !important;
+}
+
+/* login stuff */
+.login-overlay {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.522);
+    pointer-events: auto;
+}
+.login-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    max-width: 400px;
+    height: fit-content;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    position: relative;
+}
+
+.login-card * {
+    width: 100%;
+}
+.login-card h3 {
+    text-align: center;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}

@@ -23,26 +23,30 @@ function authenthicateRequests(
     next: NextFunction
 ) {
     try {
-        const authorization = (request.header as any)[
-            "Authorization"
+        const authorization = (request.headers as any)[
+            "authorization"
         ] as string;
         const token = authorization.split(" ")[1];
         const decoded = jwt.verify(token, ENV.jwtSecret as string);
         (response as any).userObject = decoded;
-        next();
     } catch (e) {
         response.status(500).json({
             message: "authentication did not go through",
             error: e,
         });
     }
+    next();
 }
 
 // sign in
 app.post("/sign-in", async (req, res) => {
     try {
         const password = req.body.password;
-        if (await Auth.verifyPassword(password)) {
+        const username = req.body.username;
+        if (
+            (await Auth.verifyPassword(password)) &&
+            username === ENV.adminUser
+        ) {
             const tokens = Auth.GenerateTokens();
             res.json(tokens);
         } else {
@@ -89,7 +93,7 @@ app.post("/refresh-tokens", async (req, res) => {
     }
 });
 //  protected write route
-app.post("/write", authenthicateRequests, async (req, res) => {
+app.post("/append-record", authenthicateRequests, async (req, res) => {
     try {
         const body = req.body;
         await SheetsWrapper.appendRecord([
@@ -107,17 +111,19 @@ app.post("/write", authenthicateRequests, async (req, res) => {
     }
 });
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
     res.status(200).json({ message: "elbert's sleep tracker" });
 });
 
-app.listen(ENV.port, () => {
+app.listen(ENV.port, async () => {
     console.log("express server on", ENV.port);
+    await SheetsWrapper.init();
+    // (async () => {
+    //     console.log(
+    //         await SheetsWrapper.appendRecord(["a", "01:30", "09:30", "d"])
+    //     );
+    //     console.log(await SheetsWrapper.readGoogleSheets());
+    // })();
 });
 
-// console.clear();
-// (async () => {
-//     await SheetsWrapper.init();
-//     console.log(await SheetsWrapper.appendRecord(["a", "01:30", "09:30", "d"]));
-//     console.log(await SheetsWrapper.readGoogleSheets());
-// })();
+console.clear();
