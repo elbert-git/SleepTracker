@@ -60,6 +60,7 @@ button[black] {
     position: absolute;
     height: 100%;
     width: 100%;
+    top: 0px;
     max-width: var(--max-width);
 }
 
@@ -162,4 +163,39 @@ button[black] {
 }
 #lowerDialogue.hide {
     top: 10vh;
+}
+
+.night-overlay {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.night-overlay button {
+    font-size: 3rem;
+    width: 100%;
+    border-radius: 3rem;
+}
+
+.morning-overlay {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.morning-overlay p {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.rating-buttons-container button {
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
 }

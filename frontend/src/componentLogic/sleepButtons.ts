@@ -1,9 +1,12 @@
 import API from "../api";
 
 export default class SleepButtons {
+    // key properties
     static localStorageKey = "previousSleep";
-    static previosSleepRecord: Date | null;
     static lastNightThreshold = 14;
+    // key states
+    static previosSleepRecord: Date | null;
+    //
     static onStart() {
         // load previous sleep time
         try {
@@ -22,6 +25,13 @@ export default class SleepButtons {
         }
         // trigger correct graphics
         SleepButtons.setNightMode(new Date().getHours() > 18); // trigger night mode after 6 pm
+        // button events
+        const sleepButton = document.querySelector("#sleepButton");
+        sleepButton!.addEventListener("click", async () => {
+            // hide the button
+            // save the sleep time
+            SleepButtons.recordSleep();
+        });
     }
     static recordSleep() {
         const currentTime = new Date();

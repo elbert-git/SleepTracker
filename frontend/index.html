@@ -30,10 +30,25 @@
         <div class="overlay night-bg"></div>
         <div class="overlay night-fg"></div>
         <!-- clock -->
-        <h1 class="overlay time pacifico-regular">09:30</h1>
+        <h1 class="overlay time pacifico-regular"></h1>
         <!-- lower <dialog></dialog> -->
         <div class="lower-dialogue-overlay">
-            <div id="lowerDialogue hide"></div>
+            <div id="lowerDialogue" class="hide"></div>
+        </div>
+        <!-- night button -->
+        <div class="overlay night-overlay none">
+            <button id="sleepButton">Sleep</button>
+        </div>
+        <!-- morning buttons -->
+        <div class="overlay morning-overlay">
+            <p>How was sleep?</p>
+            <div class="rating-buttons-container">
+                <button class="rating-button">1</button>
+                <button class="rating-button">2</button>
+                <button class="rating-button">3</button>
+                <button class="rating-button">4</button>
+                <button class="rating-button">5</button>
+            </div>
         </div>
         <script type="module" src="/src/main.ts"></script>
     </body>
