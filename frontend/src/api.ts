@@ -32,7 +32,6 @@ export default class API {
                 }),
             });
             const resjson = await res.json();
-            console.log(resjson);
             //  save login state to localstage
             if (res.status === 200) {
                 localStorage.setItem(
@@ -59,7 +58,6 @@ export default class API {
     ) {
         try {
             // make the fetch
-            console.log(API.userObject);
             const res = await fetch(`${baseUrl}/append-record`, {
                 method: "POST",
                 headers: {
@@ -76,7 +74,6 @@ export default class API {
                 }),
             });
             const resJson = await res.json();
-            console.log(resJson);
             if (res.status !== 200) {
                 throw "request failed";
             }

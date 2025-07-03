@@ -2,6 +2,7 @@ import API from "./api";
 import LoginComponent from "./componentLogic/loginCard";
 import LowerDialogue from "./componentLogic/lowerDialogue";
 import SleepButtons, { getHHMM } from "./componentLogic/sleepButtons";
+import States from "./State";
 import "./style.css";
 
 // --- --- start up key modules and components
@@ -16,6 +17,8 @@ LoginComponent.showLogoutButton(loggedIn); // if logged in show logout button
 const params = new URLSearchParams(window.location.search);
 const loginShow = params.get("login") === "";
 LoginComponent.showLogoutButton(loginShow);
+// hanlde states
+States.onStart();
 // start sleep buttons
 SleepButtons.onStart();
 

@@ -1,30 +1,16 @@
 import API from "../api";
+import States from "../State";
 
 export default class SleepButtons {
     // key properties
     static localStorageKey = "previousSleep";
+    // static localStorageKey = "previousSleep";
     static lastNightThreshold = 14;
     // key states
     static previosSleepRecord: Date | null;
-    //
+    static previousAwakeRecord: Date | null;
+    // on start
     static onStart() {
-        // load previous sleep time
-        try {
-            const load = localStorage.getItem(SleepButtons.localStorageKey);
-            // const load = "asdfdf";
-            SleepButtons.previosSleepRecord = new Date(load as string);
-            if (isNaN(SleepButtons.previosSleepRecord.getTime())) {
-                throw " failed to load sleep record";
-            }
-            console.log(
-                "last sleep time is",
-                SleepButtons.previosSleepRecord.toLocaleString()
-            );
-        } catch (e) {
-            console.log("failed to load sleep record", e);
-        }
-        // trigger correct graphics
-        SleepButtons.setNightMode(new Date().getHours() > 18); // trigger night mode after 6 pm
         // button events
         const sleepButton = document.querySelector("#sleepButton");
         sleepButton!.addEventListener("click", async () => {
@@ -32,50 +18,66 @@ export default class SleepButtons {
             // save the sleep time
             SleepButtons.recordSleep();
         });
+        const allRatingButtons = document.querySelectorAll(".rating-button");
+        for (let index = 0; index < allRatingButtons.length; index++) {
+            const element = allRatingButtons[index];
+            element.addEventListener("click", async () => {
+                console.log("asdff");
+                SleepButtons.recordAwakeAndQuality(index + 1);
+            });
+        }
     }
     static recordSleep() {
-        const currentTime = new Date();
-        localStorage.setItem(SleepButtons.localStorageKey, String(currentTime));
-        SleepButtons.previosSleepRecord = currentTime;
-        console.log("recorded sleep time as", currentTime.toLocaleTimeString());
+        // on sleep save it to local cache
+        States.cache.sleepRecord = new Date();
+        // save it to disc
+        States.saveStateToDisc();
+        // update ui
+        States.updateUI();
     }
     static recordAwakeAndQuality(rating: number) {
-        // get obvious parameters
+        // save to disk
+        States.cache.morningRecord = new Date();
+        // save it to disc
+        States.saveStateToDisc();
+
+        // set correct sleepItme
+        let sleepTime = "null";
+        if (
+            States.cache.sleepRecord != null ||
+            States.cache.sleepRecord != undefined
+        ) {
+            sleepTime = getHHMM(States.cache.sleepRecord);
+        }
+        // make the request
         const quality = rating;
         const nightOf = getYesterdaysDateYYMMDD();
         const awakeTime = getHHMM(new Date());
 
-        // check what to put as sleep time
-        let sleepTime = "00:00";
-        // if valid previous sleep revord exist use it,
-        if (SleepButtons.previosSleepRecord) {
-            const duration =
-                new Date().getTime() -
-                SleepButtons.previosSleepRecord.getTime();
-            const durationInHours = duration / (1000 * 60 * 60);
-            if (durationInHours < SleepButtons.lastNightThreshold) {
-                sleepTime = getHHMM(SleepButtons.previosSleepRecord);
-            }
-        }
         try {
             (async () => {
                 await API.appendRecord(nightOf, sleepTime, awakeTime, quality);
+                // update ui if successful
+                States.updateUI();
             })();
         } catch (e) {
             alert("record update failed");
         }
     }
-    static setNightMode(b: boolean) {
+    static toggleNightUI(b: boolean) {
         if (b) {
-            document.querySelector(".night-bg")?.classList.remove("none");
-            document.querySelector(".night-fg")?.classList.remove("none");
-            document.querySelector(".morning-bg")?.classList.add("none");
-            document.querySelector(".moring-fg")?.classList.add("none");
+            document.querySelector(".night-overlay")?.classList.remove("none");
         } else {
-            document.querySelector(".night-bg")?.classList.add("none");
-            document.querySelector(".night-fg")?.classList.add("none");
-            document.querySelector(".morning-bg")?.classList.remove("none");
-            document.querySelector(".moring-fg")?.classList.remove("none");
+            document.querySelector(".night-overlay")?.classList.add("none");
+        }
+    }
+    static toggleMorningUI(b: boolean) {
+        if (b) {
+            document
+                .querySelector(".morning-overlay")
+                ?.classList.remove("none");
+        } else {
+            document.querySelector(".morning-overlay")?.classList.add("none");
         }
     }
 }
