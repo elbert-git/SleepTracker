@@ -42,7 +42,8 @@ export default class States {
     }
     static updateUI() {
         // check if night> less than 5 and more than 8
-        const isNight = new Date().getHours() < 5 && new Date().getHours() > 18;
+        const isNight = new Date().getHours() < 5 || new Date().getHours() > 18;
+        console.log("is night", isNight);
         States.toggleNightBG(isNight); // trigger night mode after 6 pm
         // correct ui elements
         const sleepRecord = States.evaluateSleepRecord();
