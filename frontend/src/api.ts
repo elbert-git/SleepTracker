@@ -1,4 +1,5 @@
-const baseUrl = "http://localhost:3000";
+// const baseUrl = "http://localhost:3000";
+const baseUrl = "https://elcloud.lol";
 
 export default class API {
     static userObject: Object | null = null;
@@ -73,7 +74,6 @@ export default class API {
                     quality: quality,
                 }),
             });
-            const resJson = await res.json();
             if (res.status !== 200) {
                 throw "request failed";
             }

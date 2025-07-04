@@ -58,6 +58,7 @@ export default class States {
                 LowerDialogue.setMessage(
                     `Slept at ${getHHMM(States.cache.sleepRecord!)}`
                 );
+                SleepButtons.toggleNightUI(false);
             } else {
                 //  show night ui
                 SleepButtons.toggleNightUI(true);
@@ -72,6 +73,7 @@ export default class States {
                 LowerDialogue.setMessage(
                     `Awoke at ${getHHMM(States.cache.morningRecord!)}`
                 );
+                SleepButtons.toggleMorningUI(false);
             } else {
                 //  show morning ui
                 SleepButtons.toggleMorningUI(true);
