@@ -108,7 +108,9 @@ export default class States {
         ) {
             const duration =
                 States.cache.morningRecord.getTime() - new Date().getTime();
-            const isLongerThan12Hours = duration / (1000 * 60 * 60) > 12;
+
+            console.log(duration / (1000 * 60 * 60));
+            const isLongerThan12Hours = duration / (1000 * 60 * 60) < -12;
             if (!isLongerThan12Hours) {
                 final.awokeRecently = true;
             }
@@ -119,7 +121,8 @@ export default class States {
         ) {
             const duration =
                 States.cache.sleepRecord.getTime() - new Date().getTime();
-            const isLongerThan12Hours = duration / (1000 * 60 * 60) > 12;
+            console.log(duration / (1000 * 60 * 60));
+            const isLongerThan12Hours = duration / (1000 * 60 * 60) < -12;
             if (!isLongerThan12Hours) {
                 final.sleptRecently = true;
             }
