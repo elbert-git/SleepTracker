@@ -1,18 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import "https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Pacifico&display=swap";
 .pacifico-regular {
-    font-family: "Pacifico", cursive !important;
+    font-family: Pacifico, cursive !important;
     font-weight: 400;
     font-style: normal;
 }
 * {
-    font-family: "Kumbh Sans", sans-serif;
+    font-family: Kumbh Sans, sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings: "YOPQ" 300;
 }
-
-/* defaults */
 :root {
     --max-width: 600px;
 }
@@ -21,12 +19,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 html,
 body {
     height: 100%;
     max-height: 100dvh;
-    background-color: black;
+    background-color: #000;
 }
 html {
     display: flex;
@@ -38,20 +35,18 @@ body {
     max-height: 100dvh;
     overflow-y: hidden;
 }
-
-/* commons  */
 button {
     border-radius: 1rem;
     outline: none;
-    background-color: white;
-    color: black;
+    background-color: #fff;
+    color: #000;
     font-weight: 900;
     padding: 0.5rem;
     border: none;
 }
 button[black] {
-    background-color: black;
-    color: white;
+    background-color: #000;
+    color: #fff;
 }
 .none {
     display: none !important;
@@ -60,17 +55,15 @@ button[black] {
     position: absolute;
     height: 100%;
     width: 100%;
-    top: 0px;
+    top: 0;
     max-width: var(--max-width);
 }
-
-/* login stuff */
 .login-overlay {
     height: 100%;
     display: flex;
     justify-content: center;
     padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.522);
+    background-color: #00000085;
     pointer-events: auto;
     position: absolute;
 }
@@ -78,14 +71,13 @@ button[black] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: #fff;
     max-width: 400px;
     height: fit-content;
     padding: 1rem;
     border-radius: 0.5rem;
     position: relative;
 }
-
 .login-card * {
     width: 100%;
 }
@@ -98,9 +90,8 @@ button[black] {
     align-items: center;
     gap: 0.5rem;
 }
-
 .morning-bg {
-    background-image: url("assets/morning_bg.svg");
+    background-image: url(morning_bg.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -108,50 +99,48 @@ button[black] {
     width: 100%;
 }
 .morning-fg {
-    background-image: url("morning_fg.svg");
+    background-image: url(morning_fg.svg);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: cover; /* or 'cover' if you want it to cover the entire area, potentially cropping */
-    height: 100%; /* Or a defined height for the container */
-    width: 100%; /* Or a defined width for the container */
+    background-size: cover;
+    height: 100%;
+    width: 100%;
 }
 .night-bg {
-    background-image: url("assets/night_bg.svg");
+    background-image: url(night_bg.svg);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: cover; /* or 'cover' if you want it to cover the entire area, potentially cropping */
-    height: 100%; /* Or a defined height for the container */
-    width: 100%; /* Or a defined width for the container */
+    background-size: cover;
+    height: 100%;
+    width: 100%;
 }
 .night-fg {
-    background-image: url("assets/night_fg.svg");
+    background-image: url(night_fg.svg);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: cover; /* or 'cover' if you want it to cover the entire area, potentially cropping */
-    height: 100%; /* Or a defined height for the container */
-    width: 100%; /* Or a defined width for the container */
+    background-size: cover;
+    height: 100%;
+    width: 100%;
 }
-
 .time {
-    color: white;
+    color: #fff;
     font-size: 8rem;
     width: 100%;
     text-align: center;
     position: relative;
     top: -0.2em;
 }
-
 .lower-dialogue-overlay {
     height: 100%;
     width: 100%;
     max-width: var(--max-width);
-    color: white;
+    color: #fff;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     padding: 2rem;
     position: absolute;
-    top: 0px;
+    top: 0;
 }
 #lowerDialogue {
     position: relative;
@@ -164,20 +153,17 @@ button[black] {
 #lowerDialogue.hide {
     top: 10vh;
 }
-
 .night-overlay {
     display: flex;
     align-items: flex-end;
     justify-content: center;
     padding: 3rem;
 }
-
 .night-overlay button {
     font-size: 3rem;
     width: 100%;
     border-radius: 3rem;
 }
-
 .morning-overlay {
     height: 100%;
     display: flex;
@@ -187,13 +173,11 @@ button[black] {
     gap: 1rem;
     padding: 2rem;
 }
-
 .morning-overlay p {
-    color: white;
+    color: #fff;
     font-size: 2rem;
     font-weight: 700;
 }
-
 .rating-buttons-container button {
     font-size: 2rem;
     padding: 0.5rem 1rem;

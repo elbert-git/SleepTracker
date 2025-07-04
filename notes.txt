@@ -1,4 +1,0 @@
->>> frontend
-    >> handling the ui
-    >>> handling the bgs
-    
