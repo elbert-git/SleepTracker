@@ -66,6 +66,9 @@ button[black] {
     background-color: #00000085;
     pointer-events: auto;
     position: absolute;
+    top: 0;
+    width: 100%;
+    max-width: var(--max-width);
 }
 .login-card {
     display: flex;
