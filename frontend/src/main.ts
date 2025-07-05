@@ -21,17 +21,6 @@ States.onStart();
 // start sleep buttons
 SleepButtons.onStart();
 
-// window.addEventListener("keydown", (e) => {
-//     // if (e.key === "1") {
-//     //     // SleepButtons.recordSleep();
-//     //     LowerDialogue.setMessage("helloooo mother");
-//     // }
-//     // if (e.key === "2") {
-//     //     // SleepButtons.recordAwakeAndQuality(1);
-//     //     LowerDialogue.setMessage();
-//     // }
-// });
-
 // handle clock
 document.querySelector(".time")!.innerHTML = getHHMM(new Date());
 setInterval(() => {
