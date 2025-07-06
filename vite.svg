@@ -1,10 +1,1 @@
-<svg width="233" height="232" viewBox="0 0 233 232" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="121.5" cy="111.5" r="111.5" fill="#09244A"/>
-<path d="M55.6264 55.1536C71.5852 36.5257 93.8188 26.4518 116.528 25.3764C105.124 28.9417 94.5506 35.6493 86.2037 45.3922C62.5207 73.0363 65.732 114.645 93.376 138.328C121.02 162.011 162.629 158.8 186.312 131.156C197.734 117.824 202.899 101.245 202.087 84.9938C210.67 112.222 205.428 143.13 185.487 166.407C154.765 202.267 100.79 206.432 64.9303 175.71C29.0703 144.989 24.9048 91.0137 55.6264 55.1536Z" fill="url(#paint0_linear_36_6)"/>
-<defs>
-<linearGradient id="paint0_linear_36_6" x1="121.861" y1="27.0417" x2="123.01" y2="239.333" gradientUnits="userSpaceOnUse">
-<stop stop-color="white"/>
-<stop offset="1" stop-color="#FFFF6C"/>
-</linearGradient>
-</defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="31.88" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 257"><defs><linearGradient id="IconifyId1813088fe1fbc01fb466" x1="-.828%" x2="57.636%" y1="7.652%" y2="78.411%"><stop offset="0%" stop-color="#41D1FF"></stop><stop offset="100%" stop-color="#BD34FE"></stop></linearGradient><linearGradient id="IconifyId1813088fe1fbc01fb467" x1="43.376%" x2="50.316%" y1="2.242%" y2="89.03%"><stop offset="0%" stop-color="#FFEA83"></stop><stop offset="8.333%" stop-color="#FFDD35"></stop><stop offset="100%" stop-color="#FFA800"></stop></linearGradient></defs><path fill="url(#IconifyId1813088fe1fbc01fb466)" d="M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z"></path><path fill="url(#IconifyId1813088fe1fbc01fb467)" d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z"></path></svg>
