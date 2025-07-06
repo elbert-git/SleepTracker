@@ -20,10 +20,14 @@ export default class SleepButtons {
         });
         const allRatingButtons = document.querySelectorAll(".rating-button");
         for (let index = 0; index < allRatingButtons.length; index++) {
-            const element = allRatingButtons[index];
+            const element = allRatingButtons[index] as any;
             element.addEventListener("click", async () => {
-                console.log("asdff");
-                SleepButtons.recordAwakeAndQuality(index + 1);
+                // deactivate buttons first
+                element.disabled = true;
+                // sleep buttons
+                await SleepButtons.recordAwakeAndQuality(index + 1);
+                // actibate buttons first
+                element.disabled = false;
             });
         }
     }
@@ -35,7 +39,7 @@ export default class SleepButtons {
         // update ui
         States.updateUI();
     }
-    static recordAwakeAndQuality(rating: number) {
+    static async recordAwakeAndQuality(rating: number) {
         // save to disk
         States.cache.morningRecord = new Date();
         // save it to disc
@@ -55,11 +59,9 @@ export default class SleepButtons {
         const awakeTime = getHHMM(new Date());
 
         try {
-            (async () => {
-                await API.appendRecord(nightOf, sleepTime, awakeTime, quality);
-                // update ui if successful
-                States.updateUI();
-            })();
+            await API.appendRecord(nightOf, sleepTime, awakeTime, quality);
+            // update ui if successful
+            States.updateUI();
         } catch (e) {
             alert("record update failed");
         }
