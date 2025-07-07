@@ -51,7 +51,9 @@ export default class SleepButtons {
             States.cache.sleepRecord != null ||
             States.cache.sleepRecord != undefined
         ) {
-            sleepTime = getHHMM(States.cache.sleepRecord);
+            if (States.evaluateSleepRecord().sleptRecently) {
+                sleepTime = getHHMM(States.cache.sleepRecord);
+            }
         }
         // make the request
         const quality = rating;
