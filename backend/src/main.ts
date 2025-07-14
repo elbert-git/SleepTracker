@@ -93,15 +93,10 @@ app.post("/refresh-tokens", async (req, res) => {
     }
 });
 //  protected write route
-app.post("/append-record", authenthicateRequests, async (req, res) => {
+app.post("/append-weight", async (req, res) => {
     try {
         const body = req.body;
-        await SheetsWrapper.appendRecord([
-            body.nightOf,
-            body.sleepTime,
-            body.awakeTime,
-            body.quality,
-        ]);
+        await SheetsWrapper.appendRecord(body.weight);
         res.json({ message: "succesful" });
     } catch (e) {
         res.status(500).json({
@@ -119,9 +114,7 @@ app.listen(ENV.port, async () => {
     console.log("express server on", ENV.port);
     await SheetsWrapper.init();
     // (async () => {
-    //     console.log(
-    //         await SheetsWrapper.appendRecord(["a", "01:30", "09:30", "d"])
-    //     );
+    //     console.log(await SheetsWrapper.appendWeight(23.4));
     //     console.log(await SheetsWrapper.readGoogleSheets());
     // })();
 });

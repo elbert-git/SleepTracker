@@ -99,15 +99,10 @@ app.post("/refresh-tokens", (req, res) => __awaiter(void 0, void 0, void 0, func
     }
 }));
 //  protected write route
-app.post("/append-record", authenthicateRequests, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post("/append-weight", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const body = req.body;
-        yield sheets_1.SheetsWrapper.appendRecord([
-            body.nightOf,
-            body.sleepTime,
-            body.awakeTime,
-            body.quality,
-        ]);
+        yield sheets_1.SheetsWrapper.appendRecord(body.weight);
         res.json({ message: "succesful" });
     }
     catch (e) {
@@ -123,11 +118,9 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 app.listen(dotenv_1.default.port, () => __awaiter(void 0, void 0, void 0, function* () {
     console.log("express server on", dotenv_1.default.port);
     yield sheets_1.SheetsWrapper.init();
-    // (async () => {
-    //     console.log(
-    //         await SheetsWrapper.appendRecord(["a", "01:30", "09:30", "d"])
-    //     );
-    //     console.log(await SheetsWrapper.readGoogleSheets());
-    // })();
+    (() => __awaiter(void 0, void 0, void 0, function* () {
+        console.log(yield sheets_1.SheetsWrapper.appendWeight(23.4));
+        console.log(yield sheets_1.SheetsWrapper.readGoogleSheets());
+    }))();
 }));
 console.clear();

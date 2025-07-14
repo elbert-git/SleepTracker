@@ -60,6 +60,25 @@ class SheetsWrapper {
             });
         });
     }
+    static appendWeight(number) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const date = formatDate();
+            const sheets = googleapis_1.google.sheets({
+                version: "v4",
+                auth: SheetsWrapper.client,
+            });
+            const resource = {
+                values: [[date, String(number)]],
+            };
+            const response = yield sheets.spreadsheets.values.append({
+                spreadsheetId: SheetsWrapper.spreadsheetId,
+                range: SheetsWrapper.weightRecordRange,
+                valueInputOption: "USER_ENTERED",
+                insertDataOption: "INSERT_ROWS",
+                requestBody: resource,
+            });
+        });
+    }
 }
 exports.SheetsWrapper = SheetsWrapper;
 SheetsWrapper.client = null;
@@ -67,3 +86,10 @@ SheetsWrapper.credentialsPath = "./credentials.json";
 SheetsWrapper.spreadsheetId = dotenv_1.default.spreadsheetId;
 SheetsWrapper.scopes = ["https://www.googleapis.com/auth/spreadsheets"];
 SheetsWrapper.range = "Sheet1!A:E";
+SheetsWrapper.weightRecordRange = "weight!A:B";
+function formatDate(date = new Date()) {
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+    const year = String(date.getFullYear()).slice(-2); // Get last two digits of the year
+    return `${day}/${month}/${year}`;
+}
