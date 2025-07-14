@@ -118,9 +118,9 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 app.listen(dotenv_1.default.port, () => __awaiter(void 0, void 0, void 0, function* () {
     console.log("express server on", dotenv_1.default.port);
     yield sheets_1.SheetsWrapper.init();
-    (() => __awaiter(void 0, void 0, void 0, function* () {
-        console.log(yield sheets_1.SheetsWrapper.appendWeight(23.4));
-        console.log(yield sheets_1.SheetsWrapper.readGoogleSheets());
-    }))();
+    // (async () => {
+    //     console.log(await SheetsWrapper.appendWeight(23.4));
+    //     console.log(await SheetsWrapper.readGoogleSheets());
+    // })();
 }));
 console.clear();
