@@ -99,10 +99,11 @@ app.post("/refresh-tokens", (req, res) => __awaiter(void 0, void 0, void 0, func
     }
 }));
 //  protected write route
-app.post("/append-weight", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post("/append-weight", authenthicateRequests, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("rescieve weight", req.body.weight);
     try {
         const body = req.body;
-        yield sheets_1.SheetsWrapper.appendRecord(body.weight);
+        yield sheets_1.SheetsWrapper.appendWeight(body.weight);
         res.json({ message: "succesful" });
     }
     catch (e) {

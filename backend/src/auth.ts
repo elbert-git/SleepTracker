@@ -21,7 +21,7 @@ export default class Auth {
     }
     static GenerateTokens() {
         const accessToken = jwt.sign(Auth.userObject, ENV.jwtSecret as string, {
-            expiresIn: "30 days",
+            // expiresIn: "30 days",
         });
         const refreshToken = jwt.sign(Auth.userObject, ENV.jwtSecret as string);
         Auth.currentActiveRefreshToken = refreshToken;

@@ -93,10 +93,11 @@ app.post("/refresh-tokens", async (req, res) => {
     }
 });
 //  protected write route
-app.post("/append-weight", async (req, res) => {
+app.post("/append-weight", authenthicateRequests, async (req, res) => {
+    console.log("rescieve weight", req.body.weight);
     try {
         const body = req.body;
-        await SheetsWrapper.appendRecord(body.weight);
+        await SheetsWrapper.appendWeight(body.weight);
         res.json({ message: "succesful" });
     } catch (e) {
         res.status(500).json({

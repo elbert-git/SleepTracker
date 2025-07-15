@@ -36,7 +36,7 @@ class Auth {
     }
     static GenerateTokens() {
         const accessToken = jsonwebtoken_1.default.sign(Auth.userObject, dotenv_1.default.jwtSecret, {
-            expiresIn: "30 days",
+        // expiresIn: "30 days",
         });
         const refreshToken = jsonwebtoken_1.default.sign(Auth.userObject, dotenv_1.default.jwtSecret);
         Auth.currentActiveRefreshToken = refreshToken;
