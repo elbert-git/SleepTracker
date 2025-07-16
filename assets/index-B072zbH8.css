@@ -94,7 +94,7 @@ button[black] {
     gap: 0.5rem;
 }
 .morning-bg {
-    background-image: url(./assets/morning_bg.svg);
+    background-image: url(./morning_bg.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -110,7 +110,7 @@ button[black] {
     width: 100%;
 }
 .night-bg {
-    background-image: url(./assets/night_bg.svg);
+    background-image: url(./night_bg.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -118,7 +118,7 @@ button[black] {
     width: 100%;
 }
 .night-fg {
-    background-image: url(./assets/night_fg.svg);
+    background-image: url(./night_fg.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
