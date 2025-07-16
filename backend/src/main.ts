@@ -93,6 +93,23 @@ app.post("/refresh-tokens", async (req, res) => {
     }
 });
 //  protected write route
+app.post("/append-record", authenthicateRequests, async (req, res) => {
+    try {
+        const body = req.body;
+        await SheetsWrapper.appendRecord([
+            body.nightOf,
+            body.sleepTime,
+            body.awakeTime,
+            body.quality,
+        ]);
+        res.json({ message: "succesful" });
+    } catch (e) {
+        res.status(500).json({
+            message: "Error occured",
+            error: e,
+        });
+    }
+});
 app.post("/append-weight", authenthicateRequests, async (req, res) => {
     console.log("rescieve weight", req.body.weight);
     try {

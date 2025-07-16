@@ -15,7 +15,7 @@ LoginComponent.showLogoutButton(loggedIn); // if logged in show logout button
 // handle overwriting visibiility
 const params = new URLSearchParams(window.location.search);
 const loginShow = params.get("login") === "";
-LoginComponent.showLogoutButton(loginShow);
+LoginComponent.setVisible(loginShow);
 // hanlde states
 States.onStart();
 // start sleep buttons

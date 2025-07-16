@@ -103,7 +103,7 @@ button[black] {
 }
 
 .morning-bg {
-    background-image: url("assets/morning_bg.svg");
+    background-image: url("./assets/morning_bg.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -111,7 +111,7 @@ button[black] {
     width: 100%;
 }
 .morning-fg {
-    background-image: url("morning_fg.svg");
+    background-image: url("./morning_fg.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover; /* or 'cover' if you want it to cover the entire area, potentially cropping */
@@ -119,7 +119,7 @@ button[black] {
     width: 100%; /* Or a defined width for the container */
 }
 .night-bg {
-    background-image: url("assets/night_bg.svg");
+    background-image: url("./assets/night_bg.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover; /* or 'cover' if you want it to cover the entire area, potentially cropping */
@@ -127,7 +127,7 @@ button[black] {
     width: 100%; /* Or a defined width for the container */
 }
 .night-fg {
-    background-image: url("assets/night_fg.svg");
+    background-image: url("./assets/night_fg.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover; /* or 'cover' if you want it to cover the entire area, potentially cropping */
