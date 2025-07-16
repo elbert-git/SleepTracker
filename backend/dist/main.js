@@ -132,7 +132,7 @@ app.post("/append-weight", authenthicateRequests, (req, res) => __awaiter(void 0
     }
 }));
 app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.status(200).json({ message: "elbert's sleep tracker" });
+    res.status(200).json({ message: "elbert's sleep tracker built 250716" });
 }));
 app.listen(dotenv_1.default.port, () => __awaiter(void 0, void 0, void 0, function* () {
     console.log("express server on", dotenv_1.default.port);

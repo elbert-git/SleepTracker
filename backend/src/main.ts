@@ -125,7 +125,7 @@ app.post("/append-weight", authenthicateRequests, async (req, res) => {
 });
 
 app.get("/", async (req, res) => {
-    res.status(200).json({ message: "elbert's sleep tracker" });
+    res.status(200).json({ message: "elbert's sleep tracker built 250716" });
 });
 
 app.listen(ENV.port, async () => {
